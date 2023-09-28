@@ -1,0 +1,774 @@
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+<style type="text/css">
+   /*span {*/
+   /*   background-image:url(./resources/LASS.png);*/
+   /*   background-repeat: no-repeat;*/
+   /*   background-size: 100%, 100%;*/
+   /*   background-attachment: fixed;*/
+   .exp-title {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    margin: 0px 0 25px;
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 36px;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+   /*}*/
+   p {
+   line-height:30px;
+   text-align: justify;
+   }
+   body {
+   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight:300;
+   font-size:18px;
+   margin-left: auto;
+   margin-right: auto;
+   width: 1500px;
+   }
+   h1 {
+   font-size:32px;
+   font-weight:300;
+   }
+   .disclaimerbox {
+   background-color: #eee;
+   border: 1px solid #eeeeee;
+   border-radius: 10px ;
+   -moz-border-radius: 10px ;
+   -webkit-border-radius: 10px ;
+   padding: 20px;
+   }
+   video.header-vid {
+   height: 140px;
+   border: 1px solid black;
+   border-radius: 10px ;
+   -moz-border-radius: 10px ;
+   -webkit-border-radius: 10px ;
+   }
+   audio {
+   width: 280px;
+   }
+   table {
+   display: table;
+   border-collapse: separate;
+   border-spacing:20px 10px;
+   }
+   img.header-img {
+   height: 120px;
+   border: 1px solid black;
+   border-radius: 10px ;
+   -moz-border-radius: 10px ;
+   -webkit-border-radius: 10px ;
+   }
+   img.rounded {
+   border: 1px solid #eeeeee;
+   border-radius: 10px ;
+   -moz-border-radius: 10px ;
+   -webkit-border-radius: 10px ;
+   }
+   a:link,a:visited
+   {
+   color: #1367a7;
+   text-decoration: none;
+   }
+   a:hover {
+   color: #208799;
+   }
+   td.dl-link {
+   height: 160px;
+   text-align: center;
+   /*text-align: justify;*/
+   /*justify-content: space-around;*/
+   font-size: 22px;
+   }
+   .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+   box-shadow:
+   0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+   5px 5px 0 0px #fff, /* The second layer */
+   5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+   10px 10px 0 0px #fff, /* The third layer */
+   10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+   15px 15px 0 0px #fff, /* The fourth layer */
+   15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+   20px 20px 0 0px #fff, /* The fifth layer */
+   20px 20px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+   /*25px 25px 0 0px #fff, !* The fifth layer *!*/
+   /*25px 25px 1px 1px rgba(0,0,0,0.35); !* The fifth layer shadow *!*/
+   margin-left: 10px;
+   margin-right: 45px;
+   }
+   .paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+   box-shadow:
+   0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+   margin-left: 10px;
+   margin-right: 45px;
+   }
+   .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+   box-shadow:
+   0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+   5px 5px 0 0px #fff, /* The second layer */
+   5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+   10px 10px 0 0px #fff, /* The third layer */
+   10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+   margin-top: 5px;
+   margin-left: 10px;
+   margin-right: 30px;
+   margin-bottom: 5px;
+   }
+   .vert-cent {
+   position: relative;
+   top: 50%;
+   transform: translateY(-50%);
+   }
+   hr
+   {
+   border: 0;
+   height: 1px;
+   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+   }
+</style>
+<html>
+   <head>
+      <title>WavJourney: Compositional Audio Creation with Large Language Models</title>
+      <meta property="og:image" content="Path to my teaser.png"/>
+      <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+      <meta property="og:title" content="WavJourney DemoPage." />
+      <meta property="og:description" content="WavJourney: Compositional Audio Creation with Large Language Models." />
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+      <!-- Get from Google Analytics -->
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+   </head>
+	 <style>
+	    .left-align{
+		text-align:left;
+		}
+		span{
+			font-size: 35px;
+			color: black;
+			font-style: normal;
+			font-family: georgian;
+		}
+		div{
+			font-size: 100px;
+			color: yellow;
+			margin: auto;
+			width: 900px;
+		}
+			
+		body {
+			background-color:  #f5f5f5;
+
+		}
+		#content {
+
+			// border: solid black; /*设置边框样式跟颜色*/
+
+			margin: 0 auto; /*设置div居中*/
+
+			width: 200px; /*设置div宽度*/
+
+			height: 200px; /*设置div高度*/
+
+			border-width: 5px; /*设置边框宽度*/
+
+			background: #ff0; /*设置背景色*/
+
+		}
+	</style>
+	</style>
+ 
+   <body>
+	    <div id="header">
+
+    </div>
+      <br><br><br>
+      <center>
+         <span style="font-size:50px; color:black;"><b>WavJourney: Compositional Audio Creation with 
+		 <br>Large Language Models</b></span>
+         <br>
+         <br><br>
+         <br>	 
+
+      </center>	  
+      <br>
+      <table align=center width=500px>
+			<center>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://anonymous.4open.science/r/WavJourney/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span style="font-size:22px; color: black; font-family: georgian;"><b>Anonymous Code</b></span>
+                  </a>
+              </span>
+            </center>			  
+         </tr>
+      </table>
+      <br>
+      
+      <br><br>
+      <hr><br><br>
+      <table align=center width=1200px>
+         <center>
+            <h1 style="font-size:35px; color:black">Abstract</h1>
+         </center>
+         <tr>
+            <td>
+               <p style="font-size:22px; color:black; width:1200px; font-family: georgian;">
+                  Despite breakthroughs in audio generation models, their capabilities are often confined to domain-specific conditions such as speech transcriptions and audio captions. However, real-world audio creation aims to generate harmonious audio containing various elements such as speech, music, and sound effects with controllable conditions, which is challenging to address using existing audio generation systems. We present WavJourney, a novel framework that leverages Large Language Models (LLMs) to connect various audio models for audio creation. WavJourney allows users to create storytelling audio content with diverse audio elements simply from textual descriptions. Specifically, given a text instruction, WavJourney first prompts LLMs to generate an audio script that serves as a structured semantic representation of audio elements. The audio script is then converted into a computer program, where each line of the program calls a task-specific audio generation model or computational operation function. The computer program is then executed to obtain a compositional and interpretable solution for audio creation. Experimental results suggest that WavJourney is capable of synthesizing realistic audio aligned with textually-described semantic, spatial and temporal conditions, achieving state-of-the-art results on text-to-audio generation benchmarks. Additionally, we introduce a new multi-genre story benchmark. Subjective evaluations demonstrate the potential of WavJourney in crafting engaging storytelling audio content from text. We further demonstrate that WavJourney can facilitate human-machine co-creation in multi-round dialogues.            </td>
+         </tr>
+      </table>
+      <br>
+      <hr><br><br>
+
+      <table align=center width=1200px>
+         <center>
+            <h1 style="color:black; font-size:35px;">Storytelling: Science Fiction</h1>
+         </center>
+         <tr>
+            <td>
+				<p style="font-size:20px; color:black; width:1200px; font-family: georgian;"><b>Instruction</b>: Generate an audio in Science Fiction theme: Mars News 
+				reporting that Humans send light-speed probe to Alpha Centauri. Start with news anchor, followed by a reporter interviewing a chief engineer 
+				from an organization that built this probe, founded by United Earth and Mars Government, and end with the news anchor again.
+               </p>
+                <div style="text-align: center;">
+                   <!-- <iframe width="853" height="480" src="https://www.youtube.com/embed/vsEWPVEZ6gA" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+					<video src="./sci-fi/sci-fi news.mp4" controls width="853" height="480" poster="./sci-fi/scifi.jpg"> 
+					</video>
+                </div>
+            </td>
+        </tr>
+      </table>
+      <br><br>
+      <hr><br><br>
+
+
+     <table align=center width=1200px>
+         <center>
+            <h1 style="color:black; font-size:35px">Storytelling: Education</h1>
+			 
+         </center>
+         <tr>
+            <td>
+               <p style="font-size:20px; color:black; width:1200px; font-family: georgian;"><b>Instruction</b>: Generate a one-minute introduction to quantum 
+			   mechanics by a professor.
+               </p>
+			   <div style="text-align: center;">
+                <!--    <iframe width="853" height="480" src="https://www.youtube.com/embed/vsEWPVEZ6gA" frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+					<video src="./education/education_v2.mp4" controls width="853" height="480" poster="./education/education.jpg"> 
+					</video>
+                </div>
+            </td>
+         </tr>
+      </table>
+      <br><br>
+      <hr><br><br>
+
+      <center>
+         <h1 style="color:black; font-size:35px">Multi-genre Audio Storytelling Creation</h1>
+      </center><br>
+
+      <table align="center" width="1200px">
+         <tr>
+             <td align="left" width="1200px" style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+                 Sci-Fi: ''<i>Universal translators malfunction; humans and aliens bond over shared melodies.
+               </i>''<br><br>
+             </td>
+         </tr>
+         <tr>
+             <td style="text-align:center;">
+                 <audio controls="" style="width: 1000px;">
+                     <source src="demo/story/Sci-Fi-9.wav" type="audio/wav"/>
+                 </audio>
+             </td>
+         </tr>
+     </table>
+
+      <table align="center" width="1200px">
+         <tr>
+             <td align="left" width="1200px" style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+                 Travel Exploration: ''<i>Peru's Andes peaks whisper tales of the Inca, where golden cities once stood.
+               </i>''<br><br>
+             </td>
+         </tr>
+         <tr>
+             <td style="text-align:center;">
+                 <audio controls="" style="width: 1000px;">
+                     <source src="demo/story/Travel_Exploration-6.wav" type="audio/wav"/>
+                 </audio>
+             </td>
+         </tr>
+     </table>
+
+     <table align="center" width="1200px">
+         <tr>
+             <td align="left" width="1200px" style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+                 Romantic Drama: ''<i>Secrets whispered, emotions swell, two hearts navigating love's turbulent sea.
+               </i>''<br><br>
+             </td>
+         </tr>
+         <tr>
+             <td style="text-align:center;">
+                 <audio controls="" style="width: 1000px;">
+                     <source src="demo/story/Romantic_Drama-0.wav" type="audio/wav"/>
+                 </audio>
+             </td>
+         </tr>
+     </table>
+
+     <table align="center" width="1200px">
+      <tr>
+          <td align="left" width="1200px" style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+              Radio Play: ''<i>Seated by the window, rain outside, Kate listens to Jake's poetry.
+            </i>''<br><br>
+          </td>
+      </tr>
+      <tr>
+          <td style="text-align:center;">
+              <audio controls="" style="width: 1000px;">
+                  <source src="demo/story/Radio_Play-6.wav" type="audio/wav"/>
+              </audio>
+          </td>
+      </tr>
+      </table>
+
+      <table align="center" width="1200px">
+         <tr>
+             <td align="left" width="1200px" style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+                 Education: ''<i>Soundscapes and Symphonies: Introduction to Music Theory and Composition.
+               </i>''<br><br>
+             </td>
+         </tr>
+         <tr>
+             <td style="text-align:center;">
+                 <audio controls="" style="width: 1000px;">
+                     <source src="demo/story/Education-9.wav" type="audio/wav"/>
+                 </audio>
+             </td>
+         </tr>
+      </table>
+   
+
+
+      <hr><br><br>
+
+    
+      <center>
+         <h1 style="color:black; font-size:35px">Text-to-Audio Generation on AudioCaps</h1>
+      </center><br>
+      <!--      for wav and img demonstration-->
+      <table align=center width=1200px>
+         <tr>
+            <td align=left  style="font-size:20px; color:black; font-family: georgian;">
+               <p style="font-size:20px; color:black; width:1200px; font-family: georgian;"></p>
+               We present audio samples generated by WavJourney in comparison to AudioLDM and AudioGen on AudioCaps dataset. WavJourney demonstrates superior performance over SOTA methods, particularly when conditioned on complex text descriptions. It even stands on par with the ground truth. The compositional design enables WavJourney to model the complex spatio-temporal acoustic relationships among multiple sounds.
+               </p>
+			   There are four audio clips for each row:<br><br>
+               (a) Generated audio clips by WavJourney<br><br>
+               (b) Generated audio clips by <a href="https://audioldm.github.io/">AudioLDM</a>.<br><br>
+               (c) Generated audio clips by <a href="https://felixkreuk.github.io/audiogen/">AudioGen</a>. <br><br>
+               (d) Ground truth audio in AudioCaps dataset.
+               <br><br><br><br>
+            </td>
+         </tr>
+
+         <table align=center width=1200px>
+         <tr>
+            <td align=left width=1200px style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+               Audio Caption: ''<i>A man talking followed by a goat baaing then a metal gate sliding while ducks quack and wind blows into a microphone </i>''<br><br>
+            </td>
+         </tr>
+         <tr>
+            <table align=center width=1200px>
+               <tr>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/journey/CO6-i8NLbeo.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/audioldm/YCO6-i8NLbeo.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/AudioGen/YCO6-i8NLbeo.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/audiocaps/YCO6-i8NLbeo.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/journey/CO6-i8NLbeo.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/audioldm/YCO6-i8NLbeo.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/AudioGen/YCO6-i8NLbeo.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/audiocaps/YCO6-i8NLbeo.png" width="280"/>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (a) WavJourney
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (b) AudioLDM
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (c) AudioGen
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (d) Ground truth
+                     </center>
+                  </td>
+               </tr>
+               </tr>
+            </table>
+         </tr>
+         </table>
+      <br>
+
+      <table align=center width=1200px>
+         <tr>
+            <td align=left width=1200px style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+               Audio Caption: ''<i>A train running on a railroad track followed by a vehicle door closing and a man talking in the distance while a train horn honks and railroad crossing warning signals ring</i>''<br><br>
+            </td>
+         </tr>
+         <tr>
+            <table align=center width=1200px>
+               <tr>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/journey/YQSuFyFm3Lc.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/audioldm/YYQSuFyFm3Lc.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/AudioGen/YYQSuFyFm3Lc.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/audiocaps/YYQSuFyFm3Lc.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/journey/YQSuFyFm3Lc.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/audioldm/YYQSuFyFm3Lc.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/AudioGen/YYQSuFyFm3Lc.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/audiocaps/YYQSuFyFm3Lc.png" width="280"/>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (a) WavJourney
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (b) AudioLDM
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (c) AudioGen
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (d) Ground truth
+                     </center>
+                  </td>
+               </tr>
+               </tr>
+            </table>
+         </tr>
+      </table>
+      <br>
+
+      <!-- <table align=center width=1200px>
+         <tr>
+            <td align=left width=1200px style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+               Audio Caption: ''<i>A man speaking followed by a woman talking then plastic clacking as footsteps walk on grass and a rooster crows in the distance </i>''<br><br>
+            </td>
+         </tr>
+         <tr>
+            <table align=center width=1200px>
+               <tr>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/journey/FfUqv0Vv3ME.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/audioldm/YFfUqv0Vv3ME.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/AudioGen/YFfUqv0Vv3ME.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/audiocaps/YFfUqv0Vv3ME.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/journey/FfUqv0Vv3ME.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/audioldm/YFfUqv0Vv3ME.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/AudioGen/YFfUqv0Vv3ME.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/audiocaps/YFfUqv0Vv3ME.png" width="280"/>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (a) WavJourney
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (b) AudioLDM
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (c) AudioGen
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (d) Ground truth
+                     </center>
+                  </td>
+               </tr>
+               </tr>
+            </table>
+         </tr>
+      </table>
+      <br> -->
+
+      <table align=center width=1200px>
+         <tr>
+            <td align=left width=1200px style="font-size:20px; color:black; width:1000px; font-family: georgian;">
+               Audio Caption: ''<i>A man speaking over an intercom as a helicopter engine runs followed by several gunshots firing </i>''<br><br>
+            </td>
+         </tr>
+         <tr>
+            <table align=center width=1200px>
+               <tr>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/journey/bgbnu5YKTDg.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/audioldm/Ybgbnu5YKTDg.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/AudioGen/Ybgbnu5YKTDg.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <audio controls="">
+                           <source src="./demo/audiocaps/Ybgbnu5YKTDg.wav" type="audio/wav"/>
+                        </audio>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/journey/bgbnu5YKTDg.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/audioldm/Ybgbnu5YKTDg.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/AudioGen/Ybgbnu5YKTDg.png" width="280"/>
+                     </center>
+                  </td>
+                  <td>
+                     <center>
+                        <img alt="fname" height="125" src="./demo/audiocaps/Ybgbnu5YKTDg.png" width="280"/>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (a) WavJourney
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (b) AudioLDM
+                     </center>
+                  </td>
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (c) AudioGen
+                     </center>
+                  </td align=center style="font-size:16px; color:black; font-family: georgian;">
+                  <td align=center style="font-size:16px; color:black; font-family: georgian;">
+                     <center>
+                        (d) Ground truth
+                     </center>
+                  </td align=center style="font-size:16px; color:black; font-family: georgian;">
+               </tr>
+               </tr>
+            </table>
+         </tr>
+      </table>
+      <br>
+
+      
+
+
+      <br>
+     
+     
+      <br>
+      <br>
+	  <!-- 
+      <hr>
+        <table class="section" id="bibtex">
+		    <center>
+            <h2 class="section-title">BibTex</h2>
+			</center>
+            <pre id="citation" >
+			      @inproceedings{clarke2023realimpact,
+				title={RealImpact: A Dataset of Impact Sound Fields for Real Objects},
+				author={Samuel Clarke and Ruohan Gao and Mason Wang and Mark Rau and Julia Xu and Jui-Hsien Wang and Doug L. James and Jiajun Wu},
+				booktitle={Proceedings of the IEEE International Conference on Computer Vision and Pattern Recognition},
+				year={2023}
+				}
+			</pre>
+
+        </table>		
+      --
+
+
+
+      
+       
+       
+	  
+   </body>
+</html>
+</table>
+
+
